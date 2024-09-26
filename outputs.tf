@@ -2,10 +2,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 output "instance_ami" {
-  value = aws_instance.ubuntu[count.index].ami
+  value = [for instance in aws_instance.ubuntu : instance.ami]
 }
 
 output "instance_arn" {
-  value = aws_instance.ubuntu[count.index].arn
+  value = [for instance in aws_instance.ubuntu : instance.arn]
 }
-
